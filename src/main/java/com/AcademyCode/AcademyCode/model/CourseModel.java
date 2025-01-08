@@ -1,0 +1,33 @@
+package com.AcademyCode.AcademyCode.model;
+
+import com.AcademyCode.AcademyCode.enums.Categories;
+import com.AcademyCode.AcademyCode.enums.Status;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+@Data
+@Entity(name = "course")
+public class CourseModel {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    @NotBlank()
+    @Column(nullable = false, length = 100, unique = true)
+    private String name;
+    private Categories category;
+    private Status status = Status.ACTIVE;
+
+    @CreationTimestamp
+    private LocalDateTime created_at;
+
+    @UpdateTimestamp
+    private LocalDateTime updated_at;
+}
