@@ -13,6 +13,7 @@ import java.util.UUID;
 
 @Data
 @Entity(name = "user")
+@Table(name = "users")
 public class UserModel {
 
     @Id

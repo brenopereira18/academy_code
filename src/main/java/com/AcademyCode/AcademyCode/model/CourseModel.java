@@ -13,6 +13,7 @@ import java.util.UUID;
 
 @Data
 @Entity(name = "course")
+@Table(name = "course")
 public class CourseModel {
 
     @Id
@@ -22,7 +23,11 @@ public class CourseModel {
     @NotBlank()
     @Column(nullable = false, length = 100, unique = true)
     private String name;
+
+    @Enumerated(EnumType.STRING)
     private Categories category;
+
+    @Enumerated(EnumType.STRING)
     private Status status = Status.ACTIVE;
 
     @CreationTimestamp
