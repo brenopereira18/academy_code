@@ -24,7 +24,7 @@ public class CourseService {
                     throw new EntityFoundException("Este curso já existe.");
                 });
 
-        return this.courseRepository.save(courseModel);
+        return courseRepository.save(courseModel);
     }
 
     public List<ListCourseDTO> getAllCourses() {

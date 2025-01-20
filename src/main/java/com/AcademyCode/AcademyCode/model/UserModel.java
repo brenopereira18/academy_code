@@ -1,5 +1,6 @@
 package com.AcademyCode.AcademyCode.model;
 
+import com.AcademyCode.AcademyCode.enums.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -32,6 +33,9 @@ public class UserModel {
     @Column(nullable = false)
     @Length(min = 8, max = 100, message = "A senha deve conter entre 8 a 100 caracteres.")
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.ACTIVE;
 
     @CreationTimestamp
     private LocalDateTime created_at;
