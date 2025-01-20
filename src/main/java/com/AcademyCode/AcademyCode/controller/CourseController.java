@@ -20,7 +20,7 @@ public class CourseController {
     private CourseService courseService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> create(@Valid @RequestBody CourseModel courseModel) {
+    public ResponseEntity<CourseModel> create(@Valid @RequestBody CourseModel courseModel) {
         var course = courseService.create(courseModel);
         return ResponseEntity.ok().body(course);
     }
@@ -36,7 +36,7 @@ public class CourseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@Valid @PathVariable UUID id, @RequestBody CourseModel courseModel) {
+    public ResponseEntity<CourseModel> update(@Valid @PathVariable UUID id, @RequestBody CourseModel courseModel) {
         CourseModel updatedCourse = courseService.update(id, courseModel);
         return ResponseEntity.ok(updatedCourse);
     }
