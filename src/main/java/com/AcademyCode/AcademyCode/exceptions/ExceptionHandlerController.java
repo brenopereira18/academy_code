@@ -21,7 +21,7 @@ public class ExceptionHandlerController {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<List<ErrorMessageDTO>> handlerMethodArgumentNotValidationException(MethodArgumentNotValidException e) {
+    public ResponseEntity<List<ErrorMessageDTO>> handlerMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         List<ErrorMessageDTO> dto = new ArrayList<>();
 
         e.getBindingResult().getFieldErrors().forEach(err -> {
@@ -35,5 +35,10 @@ public class ExceptionHandlerController {
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<Object> handlerResourceNotFound(ResourceNotFoundException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
+
+    @ExceptionHandler(EntityFoundException.class)
+    public ResponseEntity<Object> handlerEntityFound(EntityFoundException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
     }
 }
