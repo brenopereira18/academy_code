@@ -5,6 +5,7 @@ import com.AcademyCode.AcademyCode.model.UserModel;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class UserController {
         return ResponseEntity.ok().body(user);
     }
 
+    @PreAuthorize("hasRole('MANAGER')")
     @GetMapping("/")
     public ResponseEntity<List<UserModel>> getAllUsers() {
         List<UserModel> users = userService.getAllUsers();

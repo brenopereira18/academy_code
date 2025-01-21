@@ -7,6 +7,7 @@ import com.AcademyCode.AcademyCode.model.CourseModel;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @PostMapping("/")
     public ResponseEntity<CourseModel> create(@Valid @RequestBody CourseModel courseModel) {
         var course = courseService.create(courseModel);
@@ -35,12 +37,14 @@ public class CourseController {
         return ResponseEntity.ok().body(courses);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @PutMapping("/{id}")
     public ResponseEntity<CourseModel> update(@Valid @PathVariable UUID id, @RequestBody CourseModel courseModel) {
         CourseModel updatedCourse = courseService.update(id, courseModel);
         return ResponseEntity.ok(updatedCourse);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable UUID id) {
         courseService.delete(id);
