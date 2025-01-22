@@ -41,7 +41,7 @@ public class UserModel implements UserDetails {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private UserRole role;
+    private UserRole role = UserRole.USER;
 
     @Enumerated(EnumType.STRING)
     private Status status = Status.ACTIVE;
