@@ -1,11 +1,16 @@
 package com.AcademyCode.AcademyCode.Service;
 
+import com.AcademyCode.AcademyCode.DTO.UserProfileDTO;
+import com.AcademyCode.AcademyCode.DTO.UserRoleDTO;
+import com.AcademyCode.AcademyCode.enums.Status;
+import com.AcademyCode.AcademyCode.enums.UserRole;
 import com.AcademyCode.AcademyCode.exceptions.EntityFoundException;
 import com.AcademyCode.AcademyCode.exceptions.ResourceNotFoundException;
 import com.AcademyCode.AcademyCode.model.UserModel;
 import com.AcademyCode.AcademyCode.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,13 +22,23 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public UserModel create(UserModel userModel) {
+    public UserModel register(UserModel userModel) {
         this.userRepository.findByUsername(userModel.getUsername())
                 .ifPresent(user -> {
                     throw new EntityFoundException("Usuário já existe");
                 });
 
+        String encryptedPassword = new BCryptPasswordEncoder().encode(userModel.getPassword());
+        userModel.setPassword(encryptedPassword);
+
         return userRepository.save(userModel);
+    }
+
+    public UserModel getUser(UUID id) {
+        UserModel user = userRepository.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException("Usuário com o id " + id + " não encontrado"));
+
+        return user;
     }
 
     public List<UserModel> getAllUsers() {
@@ -31,13 +46,24 @@ public class UserService {
     }
 
     @Transactional
-    public UserModel update(UUID id, UserModel userModel) {
+    public UserModel updateOwnProfile(String username, UserProfileDTO userProfileDTO) {
+        UserModel user = userRepository.findByUsername(username).orElseThrow(() ->
+                new ResourceNotFoundException("Usuário não encontrado"));
+
+        String encryptedPassword = new BCryptPasswordEncoder().encode(userProfileDTO.getPassword());
+        user.setName(userProfileDTO.getName());
+        user.setPassword(encryptedPassword);
+
+        return userRepository.save(user);
+    }
+
+    @Transactional
+    public UserModel updateUserRole(UUID id, UserRoleDTO userRoleDTO) {
         UserModel userToBeUpdate = userRepository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("Usuário com o id " + id + " não encontrado"));
 
-        userToBeUpdate.setName(userModel.getName());
-        userToBeUpdate.setUsername(userModel.getUsername());
-        userToBeUpdate.setPassword(userModel.getPassword());
+        userToBeUpdate.setRole(userRoleDTO.getRole());
+        userToBeUpdate.setStatus(userRoleDTO.getStatus());
 
         return userRepository.save(userToBeUpdate);
     }

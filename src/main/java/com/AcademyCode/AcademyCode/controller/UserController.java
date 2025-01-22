@@ -1,5 +1,6 @@
 package com.AcademyCode.AcademyCode.controller;
 
+import com.AcademyCode.AcademyCode.DTO.UserRoleDTO;
 import com.AcademyCode.AcademyCode.Service.UserService;
 import com.AcademyCode.AcademyCode.model.UserModel;
 import jakarta.validation.Valid;
@@ -18,9 +19,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/")
-    public ResponseEntity<UserModel> create(@Valid @RequestBody UserModel userModel ) {
-        UserModel user = userService.create(userModel);
+    @GetMapping("/{id}")
+    public ResponseEntity<UserModel> getUser(@PathVariable UUID id) {
+        UserModel user = userService.getUser(id);
         return ResponseEntity.ok().body(user);
     }
 
@@ -35,9 +36,10 @@ public class UserController {
         return ResponseEntity.ok().body(users);
     }
 
+    @PreAuthorize("hasRole('MANAGER')")
     @PutMapping("/{id}")
-    public ResponseEntity<UserModel> update(@Valid @PathVariable UUID id, @RequestBody UserModel userModel) {
-        UserModel updatedUser = userService.update(id, userModel);
+    public ResponseEntity<UserModel> updateUserRole(@Valid @PathVariable UUID id, @RequestBody UserRoleDTO userRoleDTO) {
+        UserModel updatedUser = userService.updateUserRole(id, userRoleDTO);
         return ResponseEntity.ok().body(updatedUser);
     }
 
