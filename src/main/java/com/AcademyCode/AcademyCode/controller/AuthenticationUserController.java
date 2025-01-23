@@ -28,12 +28,12 @@ public class AuthenticationUserController {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.getUsername(), data.getPassword());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(auth);
     }
 
     @PostMapping("/register")
     public ResponseEntity<UserModel> register(@Valid @RequestBody UserModel userModel) {
-        UserModel user = userService.create(userModel);
+        UserModel user = userService.register(userModel);
         return ResponseEntity.ok().body(user);
     }
 
