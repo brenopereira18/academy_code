@@ -1,5 +1,6 @@
 package com.AcademyCode.AcademyCode.Service;
 
+import com.AcademyCode.AcademyCode.exceptions.ResourceNotFoundException;
 import com.AcademyCode.AcademyCode.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +16,7 @@ public class AuthorizationUser implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByLogin(username);
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado: " + username));
     }
 }
