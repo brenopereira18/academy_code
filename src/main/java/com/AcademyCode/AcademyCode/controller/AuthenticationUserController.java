@@ -1,7 +1,9 @@
 package com.AcademyCode.AcademyCode.controller;
 
 import com.AcademyCode.AcademyCode.DTO.AuthenticationDTO;
+import com.AcademyCode.AcademyCode.DTO.LoginResponseDTO;
 import com.AcademyCode.AcademyCode.DTO.UserProfileDTO;
+import com.AcademyCode.AcademyCode.Provider.TokenProvider;
 import com.AcademyCode.AcademyCode.Service.UserService;
 import com.AcademyCode.AcademyCode.model.UserModel;
 import jakarta.validation.Valid;
@@ -21,6 +23,9 @@ public class AuthenticationUserController {
     private AuthenticationManager authenticationManager;
 
     @Autowired
+    private TokenProvider tokenProvider;
+
+    @Autowired
     private UserService userService;
 
     @PostMapping("/login")
@@ -28,7 +33,8 @@ public class AuthenticationUserController {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.getUsername(), data.getPassword());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
-        return ResponseEntity.ok().body(auth);
+        var token = tokenProvider.generateToken((UserModel) auth.getPrincipal());
+        return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
     @PostMapping("/register")
