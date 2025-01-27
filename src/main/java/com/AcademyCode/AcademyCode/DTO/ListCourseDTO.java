@@ -1,6 +1,6 @@
 package com.AcademyCode.AcademyCode.DTO;
 
-import com.AcademyCode.AcademyCode.enums.Categories;
+import com.AcademyCode.AcademyCode.enums.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -8,6 +8,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class ListCourseDTO {
     private String name;
-    private Categories category;
+    private Category category;
 }
 
