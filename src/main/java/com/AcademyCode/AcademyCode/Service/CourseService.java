@@ -1,6 +1,8 @@
 package com.AcademyCode.AcademyCode.Service;
 
 import com.AcademyCode.AcademyCode.DTO.ListCourseDTO;
+import com.AcademyCode.AcademyCode.enums.Category;
+import com.AcademyCode.AcademyCode.enums.Status;
 import com.AcademyCode.AcademyCode.exceptions.EntityFoundException;
 import com.AcademyCode.AcademyCode.exceptions.ResourceNotFoundException;
 import com.AcademyCode.AcademyCode.model.CourseModel;
@@ -27,8 +29,22 @@ public class CourseService {
         return courseRepository.save(courseModel);
     }
 
-    public List<ListCourseDTO> getAllCourses() {
-        var courses = courseRepository.findAll();
+    public List<ListCourseDTO> getCoursesByFilters(Category categoy) {
+        Status status = Status.ACTIVE;
+        List<CourseModel> courses;
+        if (categoy != null) {
+            courses = courseRepository.findByStatusAndCategory(status, categoy);
+        } else {
+            courses = courseRepository.findByStatus(status);
+        }
+
+        return courses.stream().map(course ->
+                new ListCourseDTO(course.getName(), course.getCategory())
+        ).toList();
+    }
+
+    public List<ListCourseDTO> getCoursesDisable() {
+        List<CourseModel> courses = courseRepository.findByStatus(Status.DISABLED);
 
         return courses.stream().map(course ->
                 new ListCourseDTO(course.getName(), course.getCategory())
