@@ -1,6 +1,6 @@
 package com.AcademyCode.AcademyCode.enums;
 
-public enum Categories {
+public enum Category {
     FRONT_END("Front-End"),
     BACK_END("Back-End"),
     DEVOPS("DevOps"),
@@ -10,7 +10,7 @@ public enum Categories {
 
     private final String displayName;
 
-    Categories(String displayName) {
+    Category(String displayName) {
         this.displayName = displayName;
     }
 

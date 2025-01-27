@@ -2,6 +2,7 @@ package com.AcademyCode.AcademyCode.controller;
 
 import com.AcademyCode.AcademyCode.DTO.ListCourseDTO;
 import com.AcademyCode.AcademyCode.Service.CourseService;
+import com.AcademyCode.AcademyCode.enums.Category;
 import com.AcademyCode.AcademyCode.model.CourseModel;
 
 import jakarta.validation.Valid;
@@ -28,8 +29,20 @@ public class CourseController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<ListCourseDTO>> getAllCourses() {
-        var courses = courseService.getAllCourses();
+    public ResponseEntity<List<ListCourseDTO>> getCoursesByFilters(@RequestParam(required = false) Category category) {
+        var courses = courseService.getCoursesByFilters(category);
+        if (courses.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok().body(courses);
+    }
+
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
+    @GetMapping("/disabled")
+    public ResponseEntity<List<ListCourseDTO>> getCousersDisable() {
+        var courses = courseService.getCoursesDisable();
+
         if (courses.isEmpty()) {
             return ResponseEntity.noContent().build();
         }

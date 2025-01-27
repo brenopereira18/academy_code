@@ -1,6 +1,6 @@
 package com.AcademyCode.AcademyCode.model;
 
-import com.AcademyCode.AcademyCode.enums.Categories;
+import com.AcademyCode.AcademyCode.enums.Category;
 import com.AcademyCode.AcademyCode.enums.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -25,7 +25,7 @@ public class CourseModel {
     private String name;
 
     @Enumerated(EnumType.STRING)
-    private Categories category;
+    private Category category;
 
     @Enumerated(EnumType.STRING)
     private Status status = Status.ACTIVE;
