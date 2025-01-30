@@ -2,6 +2,7 @@ package com.AcademyCode.AcademyCode.model;
 
 import com.AcademyCode.AcademyCode.enums.Status;
 import com.AcademyCode.AcademyCode.enums.UserRole;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -29,11 +30,13 @@ public class UserModel implements UserDetails {
 
     @NotBlank()
     @Column(nullable = false, length = 100)
+    @Schema(description = "Nome do usuário", example = "João")
     private String name;
 
     @NotBlank()
     @Pattern(regexp = "\\S+", message = "O campo [username] não deve conter espaço.")
     @Column(unique = true, length = 30, nullable = false)
+    @Schema(description = "Username do usuário", example = "joão_silva")
     private String username;
 
     @Column(nullable = false)
