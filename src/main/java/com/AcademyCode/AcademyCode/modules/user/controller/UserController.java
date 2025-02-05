@@ -1,8 +1,8 @@
-package com.AcademyCode.AcademyCode.controller;
+package com.AcademyCode.AcademyCode.modules.user.controller;
 
-import com.AcademyCode.AcademyCode.DTO.UserRoleDTO;
-import com.AcademyCode.AcademyCode.Service.UserService;
-import com.AcademyCode.AcademyCode.model.UserModel;
+import com.AcademyCode.AcademyCode.modules.user.DTO.UserRoleDTO;
+import com.AcademyCode.AcademyCode.modules.user.Service.UserService;
+import com.AcademyCode.AcademyCode.modules.user.model.UserModel;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;

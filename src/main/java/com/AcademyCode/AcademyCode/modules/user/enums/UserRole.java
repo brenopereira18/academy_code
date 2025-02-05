@@ -1,4 +1,4 @@
-package com.AcademyCode.AcademyCode.enums;
+package com.AcademyCode.AcademyCode.modules.user.enums;
 
 public enum UserRole {
     ADMIN("admin"),

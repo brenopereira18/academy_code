@@ -1,8 +1,8 @@
-package com.AcademyCode.AcademyCode.repository;
+package com.AcademyCode.AcademyCode.modules.course.repository;
 
-import com.AcademyCode.AcademyCode.enums.Category;
-import com.AcademyCode.AcademyCode.enums.Status;
-import com.AcademyCode.AcademyCode.model.CourseModel;
+import com.AcademyCode.AcademyCode.modules.course.enums.Category;
+import com.AcademyCode.AcademyCode.modules.course.enums.Status;
+import com.AcademyCode.AcademyCode.modules.course.model.CourseModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

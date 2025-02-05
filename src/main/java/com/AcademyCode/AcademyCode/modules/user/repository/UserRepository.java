@@ -1,8 +1,7 @@
-package com.AcademyCode.AcademyCode.repository;
+package com.AcademyCode.AcademyCode.modules.user.repository;
 
-import com.AcademyCode.AcademyCode.model.UserModel;
+import com.AcademyCode.AcademyCode.modules.user.model.UserModel;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Optional;
 import java.util.UUID;

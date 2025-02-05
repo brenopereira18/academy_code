@@ -1,4 +1,4 @@
-package com.AcademyCode.AcademyCode.enums;
+package com.AcademyCode.AcademyCode.modules.course.enums;
 
 public enum Status {
     ACTIVE("active"),

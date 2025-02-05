@@ -1,12 +1,12 @@
-package com.AcademyCode.AcademyCode.Service;
+package com.AcademyCode.AcademyCode.modules.course.service;
 
-import com.AcademyCode.AcademyCode.DTO.ListCourseDTO;
-import com.AcademyCode.AcademyCode.enums.Category;
-import com.AcademyCode.AcademyCode.enums.Status;
+import com.AcademyCode.AcademyCode.modules.course.DTO.ListCourseDTO;
+import com.AcademyCode.AcademyCode.modules.course.enums.Category;
+import com.AcademyCode.AcademyCode.modules.course.enums.Status;
 import com.AcademyCode.AcademyCode.exceptions.EntityFoundException;
 import com.AcademyCode.AcademyCode.exceptions.ResourceNotFoundException;
-import com.AcademyCode.AcademyCode.model.CourseModel;
-import com.AcademyCode.AcademyCode.repository.CourseRepository;
+import com.AcademyCode.AcademyCode.modules.course.model.CourseModel;
+import com.AcademyCode.AcademyCode.modules.course.repository.CourseRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
