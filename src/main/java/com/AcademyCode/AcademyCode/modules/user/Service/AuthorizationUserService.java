@@ -1,7 +1,7 @@
-package com.AcademyCode.AcademyCode.Service;
+package com.AcademyCode.AcademyCode.modules.user.Service;
 
 import com.AcademyCode.AcademyCode.exceptions.ResourceNotFoundException;
-import com.AcademyCode.AcademyCode.repository.UserRepository;
+import com.AcademyCode.AcademyCode.modules.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AuthorizationUser implements UserDetailsService {
+public class AuthorizationUserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;

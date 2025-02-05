@@ -1,8 +1,8 @@
 package com.AcademyCode.AcademyCode.security;
 
 import com.AcademyCode.AcademyCode.Provider.TokenProvider;
-import com.AcademyCode.AcademyCode.model.UserModel;
-import com.AcademyCode.AcademyCode.repository.UserRepository;
+import com.AcademyCode.AcademyCode.modules.user.model.UserModel;
+import com.AcademyCode.AcademyCode.modules.user.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -10,7 +10,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 

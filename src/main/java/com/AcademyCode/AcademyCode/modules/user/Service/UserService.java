@@ -1,13 +1,11 @@
-package com.AcademyCode.AcademyCode.Service;
+package com.AcademyCode.AcademyCode.modules.user.Service;
 
-import com.AcademyCode.AcademyCode.DTO.UserProfileDTO;
-import com.AcademyCode.AcademyCode.DTO.UserRoleDTO;
-import com.AcademyCode.AcademyCode.enums.Status;
-import com.AcademyCode.AcademyCode.enums.UserRole;
+import com.AcademyCode.AcademyCode.modules.user.DTO.UserProfileDTO;
+import com.AcademyCode.AcademyCode.modules.user.DTO.UserRoleDTO;
 import com.AcademyCode.AcademyCode.exceptions.EntityFoundException;
 import com.AcademyCode.AcademyCode.exceptions.ResourceNotFoundException;
-import com.AcademyCode.AcademyCode.model.UserModel;
-import com.AcademyCode.AcademyCode.repository.UserRepository;
+import com.AcademyCode.AcademyCode.modules.user.model.UserModel;
+import com.AcademyCode.AcademyCode.modules.user.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

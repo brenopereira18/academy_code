@@ -1,7 +1,7 @@
-package com.AcademyCode.AcademyCode.model;
+package com.AcademyCode.AcademyCode.modules.course.model;
 
-import com.AcademyCode.AcademyCode.enums.Category;
-import com.AcademyCode.AcademyCode.enums.Status;
+import com.AcademyCode.AcademyCode.modules.course.enums.Category;
+import com.AcademyCode.AcademyCode.modules.course.enums.Status;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

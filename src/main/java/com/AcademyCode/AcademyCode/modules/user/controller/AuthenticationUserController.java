@@ -1,12 +1,11 @@
-package com.AcademyCode.AcademyCode.controller;
+package com.AcademyCode.AcademyCode.modules.user.controller;
 
-import com.AcademyCode.AcademyCode.DTO.AuthenticationDTO;
-import com.AcademyCode.AcademyCode.DTO.LoginResponseDTO;
-import com.AcademyCode.AcademyCode.DTO.UserProfileDTO;
+import com.AcademyCode.AcademyCode.modules.user.DTO.AuthenticationUserDTO;
+import com.AcademyCode.AcademyCode.modules.user.DTO.LoginResponseDTO;
+import com.AcademyCode.AcademyCode.modules.user.DTO.UserProfileDTO;
 import com.AcademyCode.AcademyCode.Provider.TokenProvider;
-import com.AcademyCode.AcademyCode.Service.UserService;
-import com.AcademyCode.AcademyCode.model.CourseModel;
-import com.AcademyCode.AcademyCode.model.UserModel;
+import com.AcademyCode.AcademyCode.modules.user.Service.UserService;
+import com.AcademyCode.AcademyCode.modules.user.model.UserModel;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -44,7 +43,7 @@ public class AuthenticationUserController {
             @ApiResponse(responseCode = "400", description = "Usuário inválido")
     })
     @PostMapping("/login")
-    public ResponseEntity login(@Valid @RequestBody AuthenticationDTO data) {
+    public ResponseEntity login(@Valid @RequestBody AuthenticationUserDTO data) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.getUsername(), data.getPassword());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 

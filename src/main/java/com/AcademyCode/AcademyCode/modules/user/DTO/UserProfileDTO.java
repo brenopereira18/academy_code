@@ -1,4 +1,4 @@
-package com.AcademyCode.AcademyCode.DTO;
+package com.AcademyCode.AcademyCode.modules.user.DTO;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;

@@ -1,6 +1,6 @@
-package com.AcademyCode.AcademyCode.DTO;
+package com.AcademyCode.AcademyCode.modules.course.DTO;
 
-import com.AcademyCode.AcademyCode.enums.Category;
+import com.AcademyCode.AcademyCode.modules.course.enums.Category;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;

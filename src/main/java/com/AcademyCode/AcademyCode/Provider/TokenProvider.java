@@ -1,6 +1,6 @@
 package com.AcademyCode.AcademyCode.Provider;
 
-import com.AcademyCode.AcademyCode.model.UserModel;
+import com.AcademyCode.AcademyCode.modules.user.model.UserModel;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;

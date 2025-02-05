@@ -1,11 +1,10 @@
-package com.AcademyCode.AcademyCode.controller;
+package com.AcademyCode.AcademyCode.modules.course.controller;
 
-import com.AcademyCode.AcademyCode.DTO.ListCourseDTO;
-import com.AcademyCode.AcademyCode.Service.CourseService;
-import com.AcademyCode.AcademyCode.enums.Category;
-import com.AcademyCode.AcademyCode.model.CourseModel;
+import com.AcademyCode.AcademyCode.modules.course.DTO.ListCourseDTO;
+import com.AcademyCode.AcademyCode.modules.course.service.CourseService;
+import com.AcademyCode.AcademyCode.modules.course.enums.Category;
+import com.AcademyCode.AcademyCode.modules.course.model.CourseModel;
 
-import com.AcademyCode.AcademyCode.model.UserModel;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
