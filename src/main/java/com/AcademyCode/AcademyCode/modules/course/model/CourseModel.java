@@ -5,7 +5,10 @@ import com.AcademyCode.AcademyCode.modules.course.enums.Status;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -15,6 +18,9 @@ import java.util.UUID;
 @Data
 @Entity(name = "course")
 @Table(name = "course")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class CourseModel {
 
     @Id
