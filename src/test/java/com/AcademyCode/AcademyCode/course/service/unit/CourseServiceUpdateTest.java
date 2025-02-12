@@ -1,4 +1,4 @@
-package com.AcademyCode.AcademyCode.course.service;
+package com.AcademyCode.AcademyCode.course.service.unit;
 
 import com.AcademyCode.AcademyCode.exceptions.ResourceNotFoundException;
 import com.AcademyCode.AcademyCode.modules.course.model.CourseModel;
@@ -10,14 +10,16 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Optional;
 import java.util.UUID;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+
 @ExtendWith(MockitoExtension.class)
-public class CourseServiceDeleteTest {
+public class CourseServiceUpdateTest {
 
     @InjectMocks
     private CourseService courseService;
@@ -26,28 +28,33 @@ public class CourseServiceDeleteTest {
     private CourseRepository courseRepository;
 
     @Test
-    public void should_delete_the_course() {
-        var course = CourseModel.builder().id(UUID.randomUUID()).name("Golang").build();
+    public void should_update_an_existing_course() {
+        var course = CourseModel.builder().id(UUID.randomUUID()).name("React avançado").build();
 
         when(courseRepository.findById(course.getId())).thenReturn(Optional.of(course));
+        when(courseRepository.save(any(CourseModel.class))).thenReturn(course);
 
-        assertDoesNotThrow(() -> courseService.delete(course.getId()));
+        course.setName("Angular avançado");
+        CourseModel courseUpdate = courseService.update(course.getId(), course);
+
+        assertNotNull(courseUpdate);
+        assertEquals("Angular avançado", courseUpdate.getName());
 
         verify(courseRepository, times(1)).findById(course.getId());
-        verify(courseRepository, times(1)).delete(course);
+        verify(courseRepository, times(1)).save(any(CourseModel.class));
     }
 
     @Test
-    public void should_throw_ResourceNotFoundException_when_course_does_not_exist() {
+    public void should_return_a_type_ResourceNotFoundException_exception_if_the_course_not_exist() {
         var course = CourseModel.builder().id(UUID.randomUUID()).name("React avançado").build();
 
         when(courseRepository.findById(course.getId())).thenReturn(Optional.empty());
 
         assertThrows(ResourceNotFoundException.class, () ->
-            courseService.delete(course.getId())
+            courseService.update(course.getId(), course)
         );
 
         verify(courseRepository, times(1)).findById(course.getId());
-        verify(courseRepository, never()).delete(any(CourseModel.class));
+        verify(courseRepository, never()).save(any(CourseModel.class));
     }
 }
