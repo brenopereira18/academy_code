@@ -1,4 +1,4 @@
-package com.AcademyCode.AcademyCode.course.service;
+package com.AcademyCode.AcademyCode.course.service.unit;
 
 import com.AcademyCode.AcademyCode.modules.course.DTO.ListCourseDTO;
 import com.AcademyCode.AcademyCode.modules.course.enums.Category;
@@ -12,7 +12,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -67,7 +66,7 @@ public class CourseServiceListTest {
 
         assertTrue(result.isEmpty());
 
-        verify(courseRepository, never()).findByStatus(Status.ACTIVE);
+        verify(courseRepository, times(1)).findByStatus(Status.ACTIVE);
     }
 
     @Test

@@ -1,4 +1,4 @@
-package com.AcademyCode.AcademyCode.course.service;
+package com.AcademyCode.AcademyCode.course.service.unit;
 
 import com.AcademyCode.AcademyCode.exceptions.EntityFoundException;
 import com.AcademyCode.AcademyCode.modules.course.model.CourseModel;

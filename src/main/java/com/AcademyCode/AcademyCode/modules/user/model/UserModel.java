@@ -6,7 +6,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.Length;
@@ -22,6 +25,9 @@ import java.util.UUID;
 @Data
 @Entity(name = "user")
 @Table(name = "users")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserModel implements UserDetails {
 
     @Id
@@ -43,9 +49,11 @@ public class UserModel implements UserDetails {
     @Length(min = 8, max = 100, message = "A senha deve conter entre 8 a 100 caracteres.")
     private String password;
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
     private UserRole role = UserRole.USER;
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
     private Status status = Status.ACTIVE;
 
