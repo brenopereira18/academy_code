@@ -35,6 +35,7 @@ public class CourseModel {
     @Enumerated(EnumType.STRING)
     private Category category;
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
     private Status status = Status.ACTIVE;
 
