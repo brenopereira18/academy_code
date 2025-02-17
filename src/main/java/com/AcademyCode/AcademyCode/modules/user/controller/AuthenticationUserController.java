@@ -14,8 +14,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,12 +45,16 @@ public class AuthenticationUserController {
             @ApiResponse(responseCode = "400", description = "Usuário inválido")
     })
     @PostMapping("/login")
-    public ResponseEntity login(@Valid @RequestBody AuthenticationUserDTO data) {
-        var usernamePassword = new UsernamePasswordAuthenticationToken(data.getUsername(), data.getPassword());
-        var auth = this.authenticationManager.authenticate(usernamePassword);
+    public ResponseEntity<LoginResponseDTO> login(@Valid @RequestBody AuthenticationUserDTO data) {
+        try {
+            var usernamePassword = new UsernamePasswordAuthenticationToken(data.getUsername(), data.getPassword());
+            var auth = this.authenticationManager.authenticate(usernamePassword);
 
-        var token = tokenProvider.generateToken((UserModel) auth.getPrincipal());
-        return ResponseEntity.ok(new LoginResponseDTO(token));
+            var token = tokenProvider.generateToken((UserModel) auth.getPrincipal());
+            return ResponseEntity.ok(new LoginResponseDTO(token));
+        } catch (BadCredentialsException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new LoginResponseDTO(null));
+        }
     }
 
     @Operation(summary = "Cadastro de usuário", description = "Esse método possibilita o usuário realizar seu cadastro")
