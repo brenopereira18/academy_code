@@ -1,17 +1,15 @@
 package com.AcademyCode.AcademyCode.course.service.integration;
 
-import com.AcademyCode.AcademyCode.course.service.utils.TestUtils;
+import com.AcademyCode.AcademyCode.utils.TestUtils;
 import com.AcademyCode.AcademyCode.modules.course.enums.Category;
 import com.AcademyCode.AcademyCode.modules.course.enums.Status;
-import com.AcademyCode.AcademyCode.modules.course.model.CourseModel;
 import com.AcademyCode.AcademyCode.modules.user.enums.UserRole;
-import com.AcademyCode.AcademyCode.modules.user.model.UserModel;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-public class CourseListIntegrationTest extends BaseIntegrationTest {
+public class CourseListIntegrationCourseTest extends BaseIntegrationCourseTest {
 
     @Test
     public void should_list_the_active_courses_by_category() throws Exception {

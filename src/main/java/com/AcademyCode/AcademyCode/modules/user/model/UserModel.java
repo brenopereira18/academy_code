@@ -2,6 +2,7 @@ package com.AcademyCode.AcademyCode.modules.user.model;
 
 import com.AcademyCode.AcademyCode.modules.course.enums.Status;
 import com.AcademyCode.AcademyCode.modules.user.enums.UserRole;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -63,6 +64,7 @@ public class UserModel implements UserDetails {
     @UpdateTimestamp
     private LocalDateTime updated_at;
 
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (this.role == UserRole.MANAGER) {

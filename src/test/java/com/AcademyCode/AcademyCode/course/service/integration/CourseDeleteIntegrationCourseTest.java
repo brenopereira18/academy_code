@@ -1,6 +1,6 @@
 package com.AcademyCode.AcademyCode.course.service.integration;
 
-import com.AcademyCode.AcademyCode.course.service.utils.TestUtils;
+import com.AcademyCode.AcademyCode.utils.TestUtils;
 import com.AcademyCode.AcademyCode.modules.course.enums.Category;
 import com.AcademyCode.AcademyCode.modules.user.enums.UserRole;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.UUID;
 
-public class CourseDeleteIntegrationTest extends BaseIntegrationTest {
+public class CourseDeleteIntegrationCourseTest extends BaseIntegrationCourseTest {
 
     @Test
     public void should_delete_the_course_if_exist() throws Exception {
