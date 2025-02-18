@@ -17,7 +17,7 @@ import org.springframework.web.context.WebApplicationContext;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-public class BaseIntegrationTest {
+public class BaseIntegrationCourseTest {
 
     protected MockMvc mvc;
 

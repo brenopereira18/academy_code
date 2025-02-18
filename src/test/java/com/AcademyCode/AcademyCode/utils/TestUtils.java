@@ -1,19 +1,19 @@
-package com.AcademyCode.AcademyCode.course.service.utils;
+package com.AcademyCode.AcademyCode.utils;
 
 import com.AcademyCode.AcademyCode.modules.course.enums.Category;
 import com.AcademyCode.AcademyCode.modules.course.enums.Status;
 import com.AcademyCode.AcademyCode.modules.course.model.CourseModel;
-import com.AcademyCode.AcademyCode.modules.course.repository.CourseRepository;
+
 import com.AcademyCode.AcademyCode.modules.user.enums.UserRole;
 import com.AcademyCode.AcademyCode.modules.user.model.UserModel;
-import com.AcademyCode.AcademyCode.modules.user.repository.UserRepository;
+
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 import java.time.Duration;
 import java.time.Instant;
