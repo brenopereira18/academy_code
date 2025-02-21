@@ -8,10 +8,10 @@
 		<version>3.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.AcademyCode</groupId>
-	<artifactId>AcademyCode</artifactId>
+	<groupId>com.academycode</groupId>
+	<artifactId>academycode</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>AcademyCode</name>
+	<name>academycode</name>
 	<description>Plataforma de derenciador de cursos de programação</description>
 	<url/>
 	<licenses>
