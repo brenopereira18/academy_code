@@ -32,14 +32,14 @@ public class CourseServiceListTest {
         var course2 = CourseModel.builder().category(Category.FRONT_END).build();
         List<CourseModel> courses = List.of(course1, course2);
 
-        when(courseRepository.findByStatusAndCategory(Status.ACTIVE, Category.FRONT_END)).thenReturn(courses);
+        when(courseRepository.findByStatusCourseAndCategory(Status.ACTIVE, Category.FRONT_END)).thenReturn(courses);
 
         List<ListCourseDTO> result = courseService.getCoursesByFilters(Category.FRONT_END);
 
         assertNotNull(result);
         assertEquals(2, result.size());
 
-        verify(courseRepository, times(1)).findByStatusAndCategory(Status.ACTIVE, Category.FRONT_END);
+        verify(courseRepository, times(1)).findByStatusCourseAndCategory(Status.ACTIVE, Category.FRONT_END);
     }
 
     @Test
@@ -48,25 +48,25 @@ public class CourseServiceListTest {
         var course2 = CourseModel.builder().category(Category.FRONT_END).name("React Avançado").build();
         List<CourseModel> courses = List.of(course1, course2);
 
-        when(courseRepository.findByStatus(Status.ACTIVE)).thenReturn(courses);
+        when(courseRepository.findByStatusCourse(Status.ACTIVE)).thenReturn(courses);
 
         List<ListCourseDTO> result = courseService.getCoursesByFilters(null);
 
         assertNotNull(result);
         assertEquals(2, result.size());
 
-        verify(courseRepository, times(1)).findByStatus(Status.ACTIVE);
+        verify(courseRepository, times(1)).findByStatusCourse(Status.ACTIVE);
     }
 
     @Test
     public void should_return_empty_list_when_there_is_no_active_course() {
-        when(courseRepository.findByStatus(Status.ACTIVE)).thenReturn(List.of());
+        when(courseRepository.findByStatusCourse(Status.ACTIVE)).thenReturn(List.of());
 
         List<ListCourseDTO> result = courseService.getCoursesByFilters(null);
 
         assertTrue(result.isEmpty());
 
-        verify(courseRepository, times(1)).findByStatus(Status.ACTIVE);
+        verify(courseRepository, times(1)).findByStatusCourse(Status.ACTIVE);
     }
 
     @Test
@@ -75,13 +75,13 @@ public class CourseServiceListTest {
         var course2 = CourseModel.builder().category(Category.FRONT_END).statusCourse(Status.DISABLED).build();
         List<CourseModel> courses = List.of(course1, course2);
 
-        when(courseRepository.findByStatus(Status.DISABLED)).thenReturn(courses);
+        when(courseRepository.findByStatusCourse(Status.DISABLED)).thenReturn(courses);
 
         List<ListCourseDTO> result = courseService.getCoursesDisable();
 
         assertNotNull(result);
         assertEquals(2, result.size());
 
-        verify(courseRepository, times(1)).findByStatus(Status.DISABLED);
+        verify(courseRepository, times(1)).findByStatusCourse(Status.DISABLED);
     }
 }

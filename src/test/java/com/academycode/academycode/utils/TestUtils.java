@@ -61,7 +61,7 @@ public class TestUtils {
         var course = CourseModel.builder()
             .name(name)
             .category(category)
-            .status(status != null ? status : Status.ACTIVE)
+            .statusCourse(status != null ? status : Status.ACTIVE)
             .build();
         return course;
     }
