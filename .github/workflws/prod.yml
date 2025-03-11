@@ -15,11 +15,4 @@ jobs:
               with:
                   distribution: temurin
                   java-version: 17
-            - name: Build project
-              run: mvn clean install
-            - name: Login docker
-              run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
-            - name: Build docker image
-              run: docker build -t devbrenopereira/academy-code
-            - name: Publish image
-              run: docker push devbrenopereira/academy-code
+            
