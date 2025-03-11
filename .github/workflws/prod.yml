@@ -15,4 +15,3 @@ jobs:
               with:
                   distribution: temurin
                   java-version: 17
-            
