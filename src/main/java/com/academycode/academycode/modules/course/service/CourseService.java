@@ -33,9 +33,9 @@ public class CourseService {
         Status status = Status.ACTIVE;
         List<CourseModel> courses;
         if (categoy != null) {
-            courses = courseRepository.findByStatusAndCategory(status, categoy);
+            courses = courseRepository.findByStatusCourseAndCategory(status, categoy);
         } else {
-            courses = courseRepository.findByStatus(status);
+            courses = courseRepository.findByStatusCourse(status);
         }
 
         return courses.stream().map(course ->
@@ -44,7 +44,7 @@ public class CourseService {
     }
 
     public List<ListCourseDTO> getCoursesDisable() {
-        List<CourseModel> courses = courseRepository.findByStatus(Status.DISABLED);
+        List<CourseModel> courses = courseRepository.findByStatusCourse(Status.DISABLED);
 
         return courses.stream().map(course ->
                 new ListCourseDTO(course.getName(), course.getCategory())
