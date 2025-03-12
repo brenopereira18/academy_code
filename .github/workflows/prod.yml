@@ -23,3 +23,13 @@ jobs:
               run: docker build -t devbrenopereira/academy_code .
             - name: Publish image
               run: docker push devbrenopereira/academy_code
+    deploy:
+        needs: build
+        runs-on: self-hosted
+        steps:
+            - name: Pull image docker hub
+              run: docker pull devbrenopereira/academy_code:latest
+            - name: remove container
+              run: docker rm -f academy-code
+            - name: Run docker container academy-code
+              run: docker run -d -p 8080:8080 -e DATABASE_URL=${{secrets.DATABASE_URL}} -e DATABASE_PASSWORD=${{secrets.DATABASE_PASSWORD}} -e DATABASE_USERNAME=${{secrets.DATABASE_USERNAME}} --name academy-code devbrenopereira/academy-code
